@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Fibonacci Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .editable {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            min-height: 40px;
+        }
+        .input-box {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editable Fibonacci Sequence</h1>
+    <div class="editable" contenteditable="true">
+        This is an editable text box. You can type here!
+    </div>
+
+    <div class="input-box">
+        <label for="fibNumber">Enter a number to get Fibonacci sequence:</label>
+        <input type="number" id="fibNumber" min="0">
+        <button onclick="generateFibonacci()">Generate</button>
+    </div>
+
+    <div id="fibResult">
+        <h2>Fibonacci Sequence:</h2>
+        <p>Enter a number above and click "Generate" to see the Fibonacci sequence.</p>
+    </div>
+
+    <script>
+        function generateFibonacci() {
+            const num = document.getElementById("fibNumber").value;
+            let fibSeq = [0, 1];
+            for (let i = 2; i < num; i++) {
+                fibSeq.push(fibSeq[i - 1] + fibSeq[i - 2]);
+            }
+            document.getElementById("fibResult").innerHTML = `
+                <h2>Fibonacci Sequence:</h2>
+                <p>${fibSeq.join(", ")}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
